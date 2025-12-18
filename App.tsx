@@ -1,14 +1,14 @@
 
-import React, { useState, useMemo } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProductGrid from './components/ProductGrid';
-import StatsSection from './components/StatsSection';
-import QuizModal from './components/QuizModal';
-import Footer from './components/Footer';
-import CartDrawer from './components/CartDrawer';
-import { Product, CartItem, Testimonial } from './types';
-import { TESTIMONIALS, PRODUCTS } from './constants';
+import React, { useState, useMemo, useEffect } from 'react';
+import Header from './components/Header.tsx';
+import Hero from './components/Hero.tsx';
+import ProductGrid from './components/ProductGrid.tsx';
+import StatsSection from './components/StatsSection.tsx';
+import QuizModal from './components/QuizModal.tsx';
+import Footer from './components/Footer.tsx';
+import CartDrawer from './components/CartDrawer.tsx';
+import { Product, CartItem, Testimonial } from './types.ts';
+import { TESTIMONIALS, PRODUCTS } from './constants.tsx';
 import { Mail, Zap, Quote, ChevronRight, Cpu, Radar, Network, X, ShoppingBag, Sparkles, Brain, Activity, ShieldCheck, Terminal } from 'lucide-react';
 
 const App: React.FC = () => {

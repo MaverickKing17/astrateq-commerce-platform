@@ -15,6 +15,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
   const [searchValue, setSearchValue] = useState('');
   const [walletConnected, setWalletConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [isBouncing, setIsBouncing] = useState(false);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -27,8 +28,17 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
     setTimeout(() => {
       setIsConnecting(false);
       setWalletConnected(true);
-    }, 2000); // Slightly increased duration to make the message more readable
+    }, 2000); 
   };
+
+  // Trigger bounce animation when cartCount changes
+  useEffect(() => {
+    if (cartCount > 0) {
+      setIsBouncing(true);
+      const timer = setTimeout(() => setIsBouncing(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -53,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
             {[
               { label: 'For Daily Drivers', id: 'daily' },
               { label: 'For EV Owners', id: 'ev' },
-              { label: 'For Families', id: 'daily' }, // Example mapping
+              { label: 'For Families', id: 'daily' }, 
               { label: 'For Businesses', id: 'fleet' }
             ].map((item) => (
               <div key={item.label} className="group relative">
@@ -120,7 +130,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
                 <ShoppingCart size={20} />
               </button>
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-cyan-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
+                <span className={`absolute -top-2 -right-2 bg-cyan-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${isBouncing ? 'scale-150' : 'scale-100'} animate-in zoom-in`}>
                   {cartCount}
                 </span>
               )}
@@ -140,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
               <button onClick={onOpenCart}>
                 <ShoppingCart className="text-gray-600" size={24} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-cyan-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  <span className={`absolute -top-2 -right-2 bg-cyan-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${isBouncing ? 'scale-150' : 'scale-100'}`}>
                     {cartCount}
                   </span>
                 )}

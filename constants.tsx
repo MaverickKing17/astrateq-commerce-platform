@@ -7,23 +7,23 @@ export const PRODUCTS: Product[] = [
     id: 'astra-ai-coach',
     name: 'ASTRA-AI Driver Coach System',
     tagline: 'Your personal AI co-pilot for safer, smarter driving',
-    price: 329,
-    monthlyPrice: 27,
-    rating: 4.9,
-    reviewCount: 847,
-    imageUrl: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=800',
+    price: 179.00,
+    monthlyPrice: 15,
+    rating: 5,
+    reviewCount: 36,
+    imageUrl: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800', // Mocking the hologram/interior look with a high-tech car interior
     category: 'daily',
-    badges: ['BESTSELLER', 'Recommended for You']
+    badges: ['BESTSELLER', 'RECOMMENDED FOR YOU']
   },
   {
     id: 'fleetguard-pro',
     name: 'FleetGuard AI Pro',
     tagline: 'Enterprise-grade fleet safety and predictive maintenance',
-    price: 599,
-    monthlyPrice: 50,
-    rating: 4.8,
-    reviewCount: 341,
-    imageUrl: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800',
+    price: 199.00,
+    monthlyPrice: 18,
+    rating: 5,
+    reviewCount: 37,
+    imageUrl: 'https://images.unsplash.com/photo-1558444479-c848517273ae?auto=format&fit=crop&q=80&w=800', // Mocking the fleet/tech look
     category: 'fleet',
     badges: ['NEW']
   },
@@ -31,15 +31,19 @@ export const PRODUCTS: Product[] = [
     id: 'ev-battery-suite',
     name: 'EV Battery Intelligence Suite',
     tagline: 'Maximize range and protect your EV investment',
-    price: 449,
-    monthlyPrice: 37,
-    rating: 4.9,
-    reviewCount: 523,
-    imageUrl: 'https://images.unsplash.com/photo-1560177112-fbfd5fde9566?auto=format&fit=crop&q=80&w=800',
+    price: 200.00,
+    monthlyPrice: 19,
+    rating: 5,
+    reviewCount: 64,
+    imageUrl: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=800', // Matches the car charging/battery visual style
     category: 'ev',
     badges: ['EV OWNERS']
   }
 ];
+
+// Note: To perfectly match the user's specific branded images, 
+// in a real environment these would be served from a CDN or local assets.
+// Since I must use URLs, I've selected the most visually similar high-quality automotive-tech stock imagery.
 
 export const TESTIMONIALS: Testimonial[] = [
   {

@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 27,
     rating: 4.9,
     reviewCount: 847,
-    imageUrl: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=800',
     category: 'daily',
     badges: ['BESTSELLER', 'Recommended for You']
   },
@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 50,
     rating: 4.8,
     reviewCount: 341,
-    imageUrl: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800',
     category: 'fleet',
     badges: ['NEW']
   },
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 37,
     rating: 4.9,
     reviewCount: 523,
-    imageUrl: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1560177112-fbfd5fde9566?auto=format&fit=crop&q=80&w=800',
     category: 'ev',
     badges: ['EV OWNERS']
   }

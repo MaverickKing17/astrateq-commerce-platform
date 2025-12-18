@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import { Product, CartItem, Testimonial } from './types';
 import { TESTIMONIALS, PRODUCTS } from './constants';
-import { Mail, Zap, Quote, ChevronRight, Cpu, Radar, Network, X, ShoppingBag } from 'lucide-react';
+import { Mail, Zap, Quote, ChevronRight, Cpu, Radar, Network, X, ShoppingBag, Sparkles, Brain, Activity, ShieldCheck, Terminal } from 'lucide-react';
 
 const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -166,13 +166,75 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-32 relative">
-          <div className="max-w-7xl mx-auto px-4">
-             <div className="bg-gray-100 rounded-[3rem] p-12 md:p-24 text-center space-y-8 relative overflow-hidden">
-                <div className="mx-auto w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-4"><Zap className="text-cyan-500" size={32} /></div>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Not Sure Which System You Need?</h2>
-                <p className="max-w-xl mx-auto text-gray-600 font-medium">Take our 60-second quiz and get a personalized safety recommendation for your vehicle and driving style.</p>
-                <button onClick={() => setIsQuizOpen(true)} className="bg-cyan-500 text-white px-12 py-5 rounded-full text-sm font-black tracking-widest hover:bg-cyan-600 transition-all transform hover:scale-105 shadow-xl shadow-cyan-500/30">FIND MY PERFECT SOLUTION</button>
+        {/* REDESIGNED AI Lab Recommendation Section */}
+        <section className="py-32 relative overflow-hidden bg-white">
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
+             <div className="relative group">
+                {/* Technical Corner Brackets */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-cyan-500/30 rounded-tl-3xl"></div>
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-cyan-500/30 rounded-br-3xl"></div>
+
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-[3rem] p-12 md:p-24 text-center space-y-10 border border-gray-100 shadow-2xl shadow-cyan-500/5 overflow-hidden relative">
+                   {/* Background AI Grid Decor */}
+                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                   
+                   {/* Floating Tech Labels */}
+                   <div className="absolute top-10 left-10 hidden lg:flex items-center space-x-2 text-[8px] font-black text-cyan-500/40 tracking-[0.3em] uppercase">
+                      <Terminal size={10} />
+                      <span>Diagnostics_Engaged: True</span>
+                   </div>
+                   <div className="absolute bottom-10 right-10 hidden lg:flex items-center space-x-2 text-[8px] font-black text-cyan-500/40 tracking-[0.3em] uppercase">
+                      <Activity size={10} />
+                      <span>Stream: v4.2_AI_Ready</span>
+                   </div>
+
+                   <div className="relative">
+                      {/* Pulsing Neural Centerpiece */}
+                      <div className="mx-auto w-24 h-24 mb-10 relative">
+                         <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+                         <div className="absolute inset-0 border-2 border-cyan-500/20 rounded-full animate-ping duration-[3000ms]"></div>
+                         <div className="relative w-full h-full bg-white rounded-3xl shadow-xl flex items-center justify-center border border-gray-100 group-hover:border-cyan-200 transition-colors">
+                            <Brain className="text-cyan-500 group-hover:scale-110 transition-transform duration-500" size={40} />
+                         </div>
+                      </div>
+
+                      <div className="space-y-4">
+                         <div className="inline-block px-4 py-1.5 bg-cyan-50 rounded-full text-[10px] font-black text-cyan-600 tracking-widest uppercase mb-4">
+                            Precision Analysis Engine
+                         </div>
+                         <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight max-w-3xl mx-auto leading-none">
+                            Find Your <span className="gradient-text">Perfect System</span> In Seconds
+                         </h2>
+                         <p className="max-w-xl mx-auto text-gray-500 font-medium text-lg leading-relaxed">
+                            Our Gemini-powered engine analyzes your vehicle specs and driving habits to engineer a custom safety recommendation.
+                         </p>
+                      </div>
+                   </div>
+                   
+                   <div className="flex flex-col items-center space-y-6">
+                      <button 
+                        onClick={() => setIsQuizOpen(true)} 
+                        className="relative group/btn bg-gray-900 text-white px-16 py-6 rounded-2xl text-sm font-black tracking-[0.2em] uppercase overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(34,211,238,0.3)] hover:scale-[1.02] active:scale-95"
+                      >
+                         <span className="relative z-10 flex items-center space-x-3">
+                            <Sparkles size={18} className="text-cyan-400" />
+                            <span>Run AI Diagnostic</span>
+                         </span>
+                         <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+                      </button>
+
+                      <div className="flex flex-wrap justify-center gap-8 pt-4">
+                        <span className="flex items-center space-x-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                          <ShieldCheck size={14} className="text-emerald-500" />
+                          <span>99.8% Accuracy</span>
+                        </span>
+                        <span className="flex items-center space-x-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                          <Activity size={14} className="text-cyan-500" />
+                          <span>Results Under 60s</span>
+                        </span>
+                      </div>
+                   </div>
+                </div>
              </div>
           </div>
         </section>

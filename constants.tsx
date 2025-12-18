@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 27,
     rating: 4.9,
     reviewCount: 847,
-    imageUrl: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800',
     category: 'daily',
     badges: ['BESTSELLER', 'Recommended for You']
   },
@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 50,
     rating: 4.8,
     reviewCount: 341,
-    imageUrl: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800',
     category: 'fleet',
     badges: ['NEW']
   },

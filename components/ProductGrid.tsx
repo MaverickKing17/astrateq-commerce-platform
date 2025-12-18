@@ -43,7 +43,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, active
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products.map((product) => (
-              <div key={product.id} className="group flex flex-col h-full bg-white border border-gray-100 rounded-[2rem] overflow-hidden transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div 
+                key={product.id} 
+                className="group flex flex-col h-full bg-white border border-gray-100 rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2 hover:scale-[1.01] animate-in fade-in slide-in-from-bottom-4"
+              >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                   <img 
                     src={product.imageUrl} 
@@ -87,9 +90,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, active
 
                   <button 
                     onClick={() => onAddToCart(product)}
-                    className="w-full bg-[#0a0f1c] text-white py-4 rounded-2xl font-black text-xs tracking-[0.15em] uppercase hover:bg-cyan-600 transition-colors flex items-center justify-center space-x-3 group"
+                    className="w-full bg-[#0a0f1c] text-white py-4 rounded-2xl font-black text-xs tracking-[0.15em] uppercase hover:bg-cyan-600 transition-colors flex items-center justify-center space-x-3 group/btn"
                   >
-                    <ShoppingCart size={18} className="group-hover:translate-x-1 transition-transform" />
+                    <ShoppingCart size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                     <span>ADD TO CART</span>
                   </button>
                 </div>

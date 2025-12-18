@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
     setTimeout(() => {
       setIsConnecting(false);
       setWalletConnected(true);
-    }, 1500);
+    }, 2000); // Slightly increased duration to make the message more readable
   };
 
   return (
@@ -98,7 +98,14 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
               ) : (
                 <Wallet size={14} />
               )}
-              <span>{isConnecting ? 'CONNECTING...' : walletConnected ? '0x71C...3F4' : 'CONNECT WALLET'}</span>
+              <span className="uppercase tracking-tight">
+                {isConnecting 
+                  ? 'CONNECTION REQUEST SENT...' 
+                  : walletConnected 
+                    ? '0x71C...3F4' 
+                    : 'CONNECT WALLET'
+                }
+              </span>
             </button>
 
             <button className="text-gray-600 hover:text-cyan-600 transition-colors">
@@ -170,7 +177,7 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onOpenQuiz, onOpenCart, onSe
           <div className="flex items-center space-y-4 flex-col">
              <button onClick={() => { onOpenQuiz(); setIsMenuOpen(false); }} className="w-full bg-cyan-500 text-white py-3 rounded-xl font-bold">FIND MY SOLUTION</button>
              <button onClick={handleConnectWallet} className="w-full border border-cyan-600 text-cyan-600 py-3 rounded-xl font-bold">
-               {walletConnected ? '0x71C...3F4' : 'CONNECT WALLET'}
+               {isConnecting ? 'REQUEST SENT...' : walletConnected ? '0x71C...3F4' : 'CONNECT WALLET'}
              </button>
           </div>
         </div>

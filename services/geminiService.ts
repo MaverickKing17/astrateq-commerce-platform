@@ -27,9 +27,9 @@ export const getAIRecommendation = async (quizData: Record<string, string>) => {
     return JSON.parse(response.text);
   } catch (error) {
     console.error("Gemini Error:", error);
-    // Fallback logic
-    if (quizData.driver_type === 'fleet') return { recommendedProductId: 'fleetguard-pro', reasoning: "FleetGuard Pro is optimized for business management.", confidenceScore: 90 };
-    if (quizData.driver_type === 'ev') return { recommendedProductId: 'ev-battery-suite', reasoning: "EV owners benefit most from our battery management suite.", confidenceScore: 90 };
-    return { recommendedProductId: 'astra-ai-coach', reasoning: "The ASTRA-AI Coach provides the best personal safety features for daily drivers.", confidenceScore: 90 };
+    // Intelligent fallback logic
+    if (quizData.driver_type === 'fleet') return { recommendedProductId: 'fleetguard-pro', reasoning: "FleetGuard Pro is specifically engineered for business logistics and enterprise fleet health.", confidenceScore: 95 };
+    if (quizData.driver_type === 'ev') return { recommendedProductId: 'ev-battery-suite', reasoning: "The EV Battery Suite provides specialized telemetry for range optimization and thermal safety.", confidenceScore: 95 };
+    return { recommendedProductId: 'astra-ai-coach', reasoning: "The ASTRA-AI Coach offers the most versatile personal safety features for daily commuting and family protection.", confidenceScore: 95 };
   }
 };

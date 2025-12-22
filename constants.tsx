@@ -11,8 +11,8 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 15,
     rating: 5,
     reviewCount: 36,
-    // Cockpit with Hologram Assistant
-    imageUrl: 'https://images.unsplash.com/photo-1635773107347-67d457395941?auto=format&fit=crop&q=80&w=800', 
+    // Modern High-Tech Cockpit HUD
+    imageUrl: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800', 
     category: 'daily',
     badges: ['BESTSELLER', 'RECOMMENDED FOR YOU']
   },
@@ -24,7 +24,7 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 18,
     rating: 5,
     reviewCount: 37,
-    // High-Tech Holographic Hub
+    // High-Tech Circuitry / Server Infrastructure (Matches Screenshot)
     imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
     category: 'fleet',
     badges: ['NEW']
@@ -37,8 +37,8 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 19,
     rating: 5,
     reviewCount: 64,
-    // Transparent EV / Battery X-Ray
-    imageUrl: 'https://images.unsplash.com/photo-1617788138017-80ad42243c5d?auto=format&fit=crop&q=80&w=800',
+    // High-Tech EV Component / Energy Visual
+    imageUrl: 'https://images.unsplash.com/photo-161964115104f-5cbfd3390761?auto=format&fit=crop&q=80&w=800',
     category: 'ev',
     badges: ['EV OWNERS']
   }

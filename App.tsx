@@ -9,7 +9,7 @@ import Footer from './components/Footer.tsx';
 import CartDrawer from './components/CartDrawer.tsx';
 import { Product, CartItem, Testimonial } from './types.ts';
 import { TESTIMONIALS, PRODUCTS } from './constants.tsx';
-import { Mail, Zap, Quote, ChevronRight, Cpu, Radar, Network, X, ShoppingBag, Sparkles, Brain, Activity, ShieldCheck, Terminal } from 'lucide-react';
+import { Mail, Zap, Quote, ChevronRight, Cpu, Radar, Network, X, ShoppingBag, Sparkles, Brain, Activity, ShieldCheck, Terminal, Layers } from 'lucide-react';
 
 const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -63,69 +63,94 @@ const App: React.FC = () => {
           <Hero onOpenQuiz={() => setIsQuizOpen(true)} />
         </div>
 
-        {/* High-Tech "Difference" Section */}
-        <section className="py-24 bg-[#05070a] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10" 
-               style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #22d3ee 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+        {/* REFINED: High-Tech "Difference" Section */}
+        <section className="py-32 bg-[#020617] relative overflow-hidden">
+          {/* Advanced Background: Grid + Radial Glows */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.15]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.08),transparent_70%)]"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-20">
-              <div className="inline-block px-3 py-1 mb-4 border border-cyan-500/30 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] font-black tracking-[0.3em] uppercase">
-                Core Technology
+            <div className="text-center mb-24">
+              <div className="inline-flex items-center space-x-2 px-4 py-1.5 mb-6 border border-cyan-500/40 rounded-full bg-cyan-500/10 backdrop-blur-md">
+                <Layers size={14} className="text-cyan-400" />
+                <span className="text-cyan-400 text-[10px] font-black tracking-[0.3em] uppercase">Architecture Overview</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-none">
                 The <span className="text-cyan-400">Astrateq</span> Difference
               </h2>
-              <p className="max-w-2xl mx-auto text-gray-400 font-medium leading-relaxed">
-                Beyond reactive safety. We've built a predictive ecosystem that understands your vehicle's mechanical "DNA" in real-time.
+              <p className="max-w-2xl mx-auto text-gray-400 text-lg font-medium leading-relaxed">
+                We've moved beyond simple sensors. Our proprietary hardware stack processes telemetry at the edge, delivering predictive insights before the driver even knows a risk exists.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               {[
                 {
                   icon: <Cpu className="text-cyan-400" size={32} />,
                   title: "Adaptive AI Learning",
                   spec: "128-Layer Neural Net",
                   latency: "2.4ms",
-                  desc: "Our proprietary neural network continuously learns your vehicle's unique patterns, adapting to your driving style."
+                  tag: "LEARNING_MODE: ACTIVE",
+                  desc: "A constantly evolving model that maps your vehicle's unique acoustic and vibration signatures to prevent catastrophic component failure."
                 },
                 {
                   icon: <Radar className="text-cyan-400" size={32} />,
                   title: "Predictive Analytics",
                   spec: "500+ Telemetry Points",
                   latency: "1.8ms",
-                  desc: "Advanced algorithms analyze high-frequency vibrations and thermal fluctuations that traditional OBD-II scanners miss."
+                  tag: "SENSORS: ENGAGED",
+                  desc: "Our systems sample engine harmonics 1,000 times per second, detecting thermal anomalies weeks before a 'Check Engine' light appears."
                 },
                 {
                   icon: <Network className="text-cyan-400" size={32} />,
                   title: "Proactive Protection",
                   spec: "Fleet-Wide Sync",
                   latency: "0.5ms",
-                  desc: "Real-time edge computing prevents incidents by alerting you to potential failures before they manifest."
+                  tag: "PROTECTION: MAXIMUM",
+                  desc: "Connected to a global fleet-learning network. When one vehicle learns a new failure pattern, every Astrateq system is updated instantly."
                 }
               ].map((feature, i) => (
-                <div key={i} className="relative group overflow-hidden">
-                  <div className="absolute -inset-0.5 bg-gradient-to-b from-cyan-500/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative h-full bg-white/[0.03] backdrop-blur-xl p-10 rounded-3xl border border-white/10 flex flex-col items-center text-center transition-all duration-300 group-hover:translate-y-[-8px] group-hover:bg-white/[0.06]">
-                    <div className="absolute top-4 right-6 flex space-x-2">
-                       <span className="text-[8px] font-black text-cyan-500/60 tracking-widest uppercase">Latency: {feature.latency}</span>
+                <div key={i} className="relative group">
+                  {/* Glowing Border Background */}
+                  <div className="absolute -inset-1 bg-gradient-to-b from-cyan-500/20 to-transparent rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm"></div>
+                  
+                  <div className="relative h-full bg-slate-900/60 backdrop-blur-2xl p-10 rounded-[2.5rem] border border-white/5 flex flex-col items-start transition-all duration-500 group-hover:translate-y-[-12px] group-hover:bg-slate-800/80 group-hover:border-cyan-500/30">
+                    
+                    {/* Top Meta Info */}
+                    <div className="w-full flex justify-between items-center mb-10">
+                      <div className="flex items-center space-x-2 bg-black/40 px-3 py-1 rounded-md border border-white/5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
+                        <span className="text-[9px] font-black text-cyan-400 tracking-widest uppercase">{feature.tag}</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-500 tracking-tighter">LATENCY: <span className="text-white">{feature.latency}</span></span>
                     </div>
+
+                    {/* Icon with Glow */}
                     <div className="mb-8 relative">
-                      <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center relative z-10 group-hover:border-cyan-500/50 transition-colors">
+                      <div className="absolute inset-0 bg-cyan-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="w-20 h-20 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center relative z-10 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] transition-all">
                         {feature.icon}
                       </div>
                     </div>
-                    <h3 className="text-xl font-black text-white mb-2">{feature.title}</h3>
-                    <div className="text-[10px] font-bold text-cyan-500 tracking-[0.2em] uppercase mb-4 opacity-70">{feature.spec}</div>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-8 font-medium">{feature.desc}</p>
+
+                    <h3 className="text-2xl font-black text-white mb-2 leading-tight">{feature.title}</h3>
+                    <div className="inline-block px-3 py-1 bg-cyan-500/5 border border-cyan-500/20 rounded-md text-[10px] font-bold text-cyan-400 tracking-[0.15em] uppercase mb-6">{feature.spec}</div>
+                    
+                    <p className="text-gray-400 text-sm leading-relaxed mb-10 font-medium">
+                      {feature.desc}
+                    </p>
+
                     <div className="mt-auto w-full">
-                      <a href="#" className="inline-flex items-center space-x-2 text-cyan-400 font-black text-[10px] tracking-widest uppercase group/link">
-                        <span>Enter Terminal</span>
-                        <ChevronRight size={14} />
-                      </a>
+                      <button className="flex items-center space-x-3 text-white font-black text-[10px] tracking-widest uppercase group/btn py-2">
+                        <span className="group-hover/btn:text-cyan-400 transition-colors">Launch System Terminal</span>
+                        <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover/btn:bg-cyan-500 group-hover/btn:text-gray-900 transition-all">
+                          <ChevronRight size={14} />
+                        </div>
+                      </button>
                     </div>
-                    <div className="absolute top-0 left-0 w-full h-[2px] bg-cyan-500/20 shadow-[0_0_15px_rgba(34,211,238,0.5)] opacity-0 group-hover:animate-[scan_3s_linear_infinite]"></div>
+
+                    {/* Scanning Line Effect */}
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[scan_2s_linear_infinite]"></div>
                   </div>
                 </div>
               ))}

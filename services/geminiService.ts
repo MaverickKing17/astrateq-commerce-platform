@@ -1,28 +1,39 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Initialize AI client. process.env.API_KEY must be configured in Vercel project settings.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize AI client lazily to prevent crashes during module evaluation
+let aiClient: GoogleGenAI | null = null;
+
+const getClient = () => {
+  if (!aiClient) {
+    const apiKey = process.env.API_KEY;
+    if (!apiKey || apiKey === 'undefined') {
+      return null;
+    }
+    aiClient = new GoogleGenAI({ apiKey });
+  }
+  return aiClient;
+};
 
 export const getAIRecommendation = async (quizData: Record<string, string>) => {
   try {
-    // Basic validation to prevent unnecessary API crashes
-    if (!process.env.API_KEY || process.env.API_KEY === 'undefined') {
-      console.warn("Gemini API Key not found. Proceeding with local logic.");
+    const ai = getClient();
+    
+    if (!ai) {
+      console.warn("Gemini API Key missing or invalid. Falling back to local logic.");
       return getFallbackRecommendation(quizData);
     }
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `Based on these user responses for a vehicle safety system quiz: ${JSON.stringify(quizData)}. 
-      Recommend which Astrateq product (ASTRA-AI Coach, FleetGuard Pro, or EV Battery Suite) fits them best and explain why in 2 short sentences. 
-      Also provide a confidence score from 0-100.`,
+      contents: `Analyze user vehicle safety needs: ${JSON.stringify(quizData)}. 
+      Recommend the best Astrateq product (astra-ai-coach, fleetguard-pro, or ev-battery-suite). 
+      Return JSON with recommendedProductId, reasoning (2 sentences), and confidenceScore (0-100).`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            recommendedProductId: { type: Type.STRING, description: "One of: astra-ai-coach, fleetguard-pro, ev-battery-suite" },
+            recommendedProductId: { type: Type.STRING },
             reasoning: { type: Type.STRING },
             confidenceScore: { type: Type.NUMBER }
           },
@@ -32,36 +43,33 @@ export const getAIRecommendation = async (quizData: Record<string, string>) => {
     });
 
     const text = response.text;
-    if (!text) throw new Error("Empty response from Gemini");
+    if (!text) throw new Error("Empty AI response");
     return JSON.parse(text);
     
   } catch (error) {
-    console.error("Gemini Recommendation Engine Error:", error);
+    console.error("Gemini Error:", error);
     return getFallbackRecommendation(quizData);
   }
 };
 
-/**
- * High-accuracy fallback recommendation logic based on driver intent.
- */
 const getFallbackRecommendation = (quizData: Record<string, string>) => {
   if (quizData.driver_type === 'fleet') {
     return { 
       recommendedProductId: 'fleetguard-pro', 
-      reasoning: "FleetGuard Pro is specifically engineered for business logistics and enterprise fleet health monitoring.", 
-      confidenceScore: 98 
+      reasoning: "Based on your business needs, FleetGuard Pro provides the necessary enterprise telemetry for fleet maintenance.", 
+      confidenceScore: 95 
     };
   }
   if (quizData.driver_type === 'ev') {
     return { 
       recommendedProductId: 'ev-battery-suite', 
-      reasoning: "The EV Battery Suite provides specialized telemetry for range optimization and thermal safety critical for electric vehicles.", 
-      confidenceScore: 98 
+      reasoning: "The EV Battery Suite is optimized for your electric vehicle's unique range and thermal safety requirements.", 
+      confidenceScore: 95 
     };
   }
   return { 
     recommendedProductId: 'astra-ai-coach', 
-    reasoning: "The ASTRA-AI Coach offers the most versatile personal safety features for daily commuting and high-accuracy accident prevention.", 
-    confidenceScore: 98 
+    reasoning: "The ASTRA-AI Coach is perfect for your daily commute, offering real-time accident prevention.", 
+    confidenceScore: 95 
   };
 };
